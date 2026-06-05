@@ -1,19 +1,23 @@
-import { db } from "./index.js";
-import {
-    collection,
-    addDoc,
-    getDocs,
-    query,
-    orderBy
-} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js";
-
-const STORAGE_KEY = "salontech-avaliacoes";
 const MAX_VISIBLE = 10;
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-link");
 const feedbackRow = document.querySelector("#feedback .row");
-const feedbackSection = document.querySelector("#feedback");
 const avaliacaoForm = document.querySelector(".avaliacao-form");
+const firebaseConfig = {
+    apiKey: "AIzaSyBLyrnpoVjuyPN1CTENcugyAEfMjbxSors",
+    authDomain: "salontech-web03.firebaseapp.com",
+    databaseURL: "https://salontech-web03-default-rtdb.firebaseio.com",
+    projectId: "salontech-web03",
+    storageBucket: "salontech-web03.firebasestorage.app",
+    messagingSenderId: "558051338399",
+    appId: "1:558051338399:web:db190fbc6210541cf9daaa",
+    measurementId: "G-1E2MC2M19P"
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const reviewsRef = database.ref("avaliacoes");
+
 let allReviews = [];
 let visibleCount = MAX_VISIBLE;
 
@@ -56,38 +60,18 @@ function renderVisibleReviews() {
 // }
 
 async function loadReviews() {
-
     try {
+        const snapshot = await reviewsRef.orderByChild("timestamp").once("value");
+        const data = snapshot.val() || {};
 
-        const q = query(
-            collection(db, "avaliacoes"),
-            orderBy("timestamp", "desc")
-        );
-
-        const snapshot = await getDocs(q);
-
-        allReviews = [];
-
-        snapshot.forEach((doc) => {
-
-            allReviews.push({
-                id: doc.id,
-                ...doc.data()
-            });
-
-        });
+        allReviews = Object.keys(data)
+            .map((key) => ({ id: key, ...data[key] }))
+            .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
         renderVisibleReviews();
-
     } catch (error) {
-
-        console.error(
-            "Erro ao carregar avaliações:",
-            error
-        );
-
+        console.error("Erro ao carregar avaliações:", error);
     }
-
 }
 
 // function saveReview(review) {
@@ -99,25 +83,16 @@ async function loadReviews() {
 // }
 
 async function saveReview(review) {
-
     try {
-
-        await addDoc(
-            collection(db, "avaliacoes"),
-            review
-        );
+        await reviewsRef.push({
+            ...review,
+            timestamp: Date.now()
+        });
 
         await loadReviews();
-
     } catch (error) {
-
-        console.error(
-            "Erro ao salvar avaliação:",
-            error
-        );
-
+        console.error("Erro ao salvar avaliação:", error);
     }
-
 }
 
 window.addEventListener("scroll", () => {
@@ -147,7 +122,7 @@ window.addEventListener("scroll", () => {
 });
 
 if (avaliacaoForm) {
-    avaliacaoForm.addEventListener("submit", (event) => {
+    avaliacaoForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const nome = document.getElementById("nome-avaliacao")?.value.trim() || "Cliente";
@@ -159,11 +134,10 @@ if (avaliacaoForm) {
             nome,
             nota,
             experiencia,
-            data,
-            timestamp: Date.now()
+            data
         };
 
-        saveReview(review);
+        await saveReview(review);
         avaliacaoForm.reset();
     });
 }
