@@ -1,0 +1,350 @@
+:root {
+    --wine: #8b0000;
+    --gold: #d4af37;
+    --dark: #111;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+section[id],
+footer[id] {
+    scroll-margin-top: 30px;
+}
+
+/* NAVBAR */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand-text {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.brand-text span {
+    color: var(--wine);
+}
+
+.nav-link {
+    color: #222;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: .3s;
+}
+
+.nav-link:hover {
+    color: var(--wine);
+}
+
+.nav-link.active {
+    color: var(--wine) !important;
+    border-bottom: 2px solid var(--wine);
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)),
+        url("img/imgSalonTech.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .35);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.hero-text {
+    font-size: 1.4rem;
+    max-width: 550px;
+}
+
+.gold-divider {
+    width: 250px;
+    height: 3px;
+    background: var(--gold);
+    margin: 20px 0;
+}
+
+.hero-btn {
+    background: var(--wine);
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.hero-btn:hover {
+    background: #b30000;
+    color: white;
+}
+
+.hero-logo {
+    max-width: 500px;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, .2));
+}
+
+/* TITULOS */
+
+.section-title {
+    color: var(--wine);
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* SOBRE */
+
+.about-img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .15);
+
+    transition: .4s;
+}
+
+.about-img:hover {
+    transform: scale(1.03);
+}
+
+.about-figure {
+    margin: 0;
+}
+
+/* SERVIÇOS */
+
+.services {
+    background: #fafafa;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    height: 100%;
+    transition: .3s;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-card i {
+    font-size: 3rem;
+    color: var(--wine);
+    margin-bottom: 15px;
+}
+
+/* DIFERENCIAIS */
+
+.advantages {
+    background: linear-gradient(90deg,
+            #700000,
+            #a00000);
+
+    color: white;
+    padding: 80px 0;
+}
+
+.advantages i {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+/* DEPOIMENTOS */
+
+.testimonial {
+    background: white;
+    border-radius: 15px;
+    padding: 34px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, .08);
+}
+
+.testimonial h6 {
+    color: var(--wine);
+    margin-top: 15px;
+}
+
+/* AVALIAÇÃO */
+
+.avaliacao-form {
+    align-items: end;
+}
+
+.avaliacao-form .col-md-3,
+.avaliacao-form .col-md-4,
+.avaliacao-form .col-md-2 {
+    display: flex;
+    align-items: stretch;
+}
+
+.avaliacao-form .form-control,
+.avaliacao-form .form-select {
+    width: 100%;
+    min-height: 52px;
+    border-radius: 12px;
+}
+
+.avaliacao-form textarea.form-control {
+    min-height: 52px;
+    height: 52px;
+    resize: vertical;
+}
+
+.avaliacao-form .btn-enviar {
+    min-height: 52px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* FOOTER */
+
+footer {
+    background: #700000;
+    color: white;
+    padding: 60px 0;
+}
+
+footer span {
+    color: var(--gold);
+}
+
+.footer-brand {
+    align-items: center;
+}
+
+.footer-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.footer-brand-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.footer-title {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-align: left;
+}
+
+.contact-list {
+    display: grid;
+    gap: .75rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: #fff;
+}
+
+.contact-item i {
+    color: var(--gold);
+    width: 18px;
+    text-align: center;
+}
+
+.contact-item a,
+.contact-item span {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: var(--gold);
+}
+
+.social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    transition: .3s;
+}
+
+.social:hover {
+    color: var(--gold);
+    background: rgba(255, 255, 255, 0.16);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:991px) {
+
+    .hero-title {
+        font-size: 3.5rem;
+        text-align: center;
+    }
+
+    .hero-text {
+        text-align: center;
+        margin: auto;
+    }
+
+    .gold-divider {
+        margin: 20px auto;
+    }
+
+    .hero-btn {
+        display: block;
+        width: fit-content;
+        margin: auto;
+    }
+
+    .hero-logo {
+        margin-top: 50px;
+        max-width: 280px;
+    }
+
+}
