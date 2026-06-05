@@ -254,30 +254,10 @@
                     O QUE NOSSOS CLIENTES DIZEM
                 </h2>
 
-                <div class="row g-4 mt-4">
+                <div class="row g-4 mt-4"></div>
 
-                    <article class="col-md-6">
-                        <div class="testimonial">
-                            ⭐⭐⭐⭐⭐
-                            <p>
-                                Atendimento perfeito! Profissionais incríveis
-                                e ambiente acolhedor.
-                            </p>
-                            <h6>Mariana Silva</h6>
-                        </div>
-                    </article>
-
-                    <article class="col-md-6">
-                        <div class="testimonial">
-                            ⭐⭐⭐⭐⭐
-                            <p>
-                                Melhor salão da cidade.
-                                Saio sempre satisfeito.
-                            </p>
-                            <h6>João Pereira</h6>
-                        </div>
-                    </article>
-
+                <div class="text-center">
+                    <button id="show-more-reviews" class="btn btn-outline-danger" type="button">Mostrar mais</button>
                 </div>
 
             </div>
@@ -297,12 +277,12 @@
 
                     <div class="col-md-3">
                         <label class="form-label visually-hidden" for="nome-avaliacao">Seu nome</label>
-                        <input id="nome-avaliacao" type="text" class="form-control" placeholder="Seu nome">
+                        <input id="nome-avaliacao" type="text" class="form-control" placeholder="Seu nome" required>
                     </div>
 
                     <div class="col-md-3">
                         <label class="form-label visually-hidden" for="nota-avaliacao">Nota</label>
-                        <select id="nota-avaliacao" class="form-select">
+                        <select id="nota-avaliacao" class="form-select" required>
                             <option>⭐</option>
                             <option>⭐⭐</option>
                             <option>⭐⭐⭐</option>
@@ -313,7 +293,7 @@
 
                     <div class="col-md-4">
                         <label class="form-label visually-hidden" for="experiencia-avaliacao">Sua experiência</label>
-                        <textarea id="experiencia-avaliacao" class="form-control" placeholder="Conte sua experiência"></textarea>
+                        <textarea id="experiencia-avaliacao" class="form-control" placeholder="Conte sua experiência" required></textarea>
                     </div>
 
                     <div class="col-md-2">
@@ -385,7 +365,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="index.js"></script>
+    <script type="module" src="script.js"></script>
 
 </body>
 

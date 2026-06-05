@@ -186,8 +186,12 @@ header {
 
 /* DEPOIMENTOS */
 
+#feedback {
+    background: #f4efef;
+}
+
 .testimonial {
-    background: white;
+    background: #fffdfa;
     border-radius: 15px;
     padding: 34px;
     min-height: 180px;
@@ -202,12 +206,20 @@ header {
 .testimonial h6 {
     color: var(--wine);
     margin-top: 15px;
+    margin-bottom: 4px;
 }
 
-/* AVALIAÇÃO */
+.testimonial-date {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin: 0;
+}
 
-.avaliacao-form {
-    align-items: end;
+#show-more-reviews {
+    margin-top: 18px;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 600;
 }
 
 .avaliacao-form .col-md-3,
