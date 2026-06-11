@@ -1,1 +1,1 @@
-SalonTech
+SalonTech - Site Institucional
